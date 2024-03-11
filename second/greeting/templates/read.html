@@ -1,0 +1,56 @@
+{% extends 'home.html' %}
+{% block 'content' %}
+<div class="container mt-5" id="userTable">
+    <h2>List of Task</h2>
+    <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search...">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>task_Id</th>
+                <th>task_name</th>
+                <th>Projectname</th>
+                <th>Description</th>
+                <th>start_date</th>
+                <th>end_date</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in values %}
+            <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.taskname}}</td>
+                <td>{{data.projectname}}</td>
+                <td>{{data.description}}</td>
+                <td>{{data.start_date}}</td>
+                <td>{{data.end_date}}</td>
+                <td><a href="{%url 'update' data.id %}" type="submit">Update</a></td>
+                <td><a href="{%url 'delete' data.id %}" type="submit">Delete</a></td>
+            </tr>
+            {% endfor %}
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function() {
+        // Add event listener for the search input
+        $('#searchInput').on('keyup', function() {
+            var searchText = $(this).val().toLowerCase();
+            // Filter the table rows based on the search text
+            $('#userTable tbody tr').each(function() {
+                var currentRowText = $(this).text().toLowerCase();
+                $(this).toggle(currentRowText.indexOf(searchText) > -1);
+            });
+            // Move the matching row to the top
+            var matchingRow = $('#userTable tbody tr:visible:first');
+            $('#userTable tbody').prepend(matchingRow);
+        });
+    });
+</script>
+
+
+
+
+{% endblock %}

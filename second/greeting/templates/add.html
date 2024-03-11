@@ -1,0 +1,46 @@
+{% extends 'home.html' %}
+{% block 'content' %}
+
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">Add Task</h3>
+            </div>
+            <div class="card-body">
+        <h2></h2>
+        <form action="" method="post">
+            {%csrf_token%}
+            {{form.errors}}
+            <div class="form-group">
+                <label for="taskname">Task id:</label>
+                <input type="text" class="form-control" id="taskname" name="taskid" placeholder="Enter task id" required>
+            </div>
+            <div class="form-group">
+                <label for="taskname">Task Name:</label>
+                <input type="text" class="form-control" id="taskname" name="taskname" placeholder="Enter taskname" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Project Name:</label>
+                <input type="text" class="form-control" id="price" name="projectname" placeholder="Enter project name" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Task Description</label>
+                <input type="text" class="form-control" id="description" name="description"placeholder="description" required>
+            </div>
+            <div class="form-group">
+                <label for="Start_date">Start_date</label>
+                <input type="date" class="form-control" id="Start_date" name="start_time" required>
+            </div>
+            <div class="form-group">
+                <label for="End_date">End_date</label>
+                <input type="date" class="form-control" id="End_date" name="end_time" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    </div>
+    </div>
+    
+
+{% endblock %}
